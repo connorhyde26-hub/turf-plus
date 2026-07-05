@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turf Plus | Lawn Care Services in Provo, UT</title>
+<meta name="description" content="Turf Plus delivers hassle-free, great-priced lawn care in Provo, UT. Local, knowledgeable crews keeping your lawn green all season. Free estimates — call today!">
+<meta property="og:title" content="Turf Plus | Lawn Care Services in Provo, UT">
+<meta property="og:description" content="Provo's local lawn care team. Hassle-free service, honest pricing, and a knowledgeable staff ready to help your lawn thrive.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/logo.jpg">
+<link rel="stylesheet" href="styles.css">
+<style>
+:root {
+  /* Primary brand color — buttons, links, CTAs, icon fills */
+  --brand-green:       #e74c3c;
+  --brand-green-dark:  #cd2a19;
+  --brand-green-light: #ef867c;
+  --brand-green-tint:  rgba(231,76,60,0.12);
+
+  /* Secondary / accent color — badge text/borders, outline buttons, nav active state */
+  --brand-blue:        #ff9b00;
+  --brand-blue-dark:   #c27600;
+  --brand-blue-light:  #ffb747;
+  --brand-blue-tint:   #f6f3ef;
+
+  /* Section alternate background — very light tint of the primary hue */
+  --bg-alt: #f8f6f6;
+
+  /* Dark section backgrounds (gallery, footer) — always very dark for readability.
+     Derived from the primary hue so they stay on-brand, but forced to near-black
+     lightness so a vivid secondary never bleeds into major background areas. */
+  --dark:      #361512;
+  --dark-card: #2c1411;
+}
+</style>
+</head>
+<body>
+<!-- ==============================================================
+  PREVIEW OVERLAY — Remove this entire block (from this comment
+  to END PREVIEW OVERLAY) once the site has been purchased and
+  handed off to the client.
+  ============================================================== -->
+<style>
+  #preview-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 14, 26, 0.93);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 24px;
+  }
+  #preview-modal {
+    background: #ffffff;
+    border-radius: 18px;
+    max-width: 560px;
+    width: 100%;
+    padding: 52px 48px 44px;
+    box-shadow: 0 32px 96px rgba(0,0,0,0.55);
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  #preview-modal h2 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 14px;
+    line-height: 1.3;
+  }
+  #preview-modal > p {
+    color: #475569;
+    font-size: 0.97rem;
+    line-height: 1.6;
+    margin: 0 0 20px;
+  }
+  #preview-modal ul {
+    text-align: left;
+    margin: 0 0 32px;
+    padding-left: 22px;
+    color: #334155;
+    font-size: 0.93rem;
+    line-height: 1.75;
+  }
+  #preview-modal ul li { margin-bottom: 6px; }
+  #preview-close-btn {
+    display: block;
+    width: 100%;
+    background: var(--brand-green, #16a34a);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 36px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    margin-bottom: 14px;
+    transition: opacity 0.2s;
+  }
+  #preview-close-btn:hover { opacity: 0.88; }
+  #preview-hint {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin: 0;
+  }
+  #preview-help-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 99998;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: var(--brand-green, #16a34a);
+    color: #ffffff;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  #preview-help-btn:hover { opacity: 0.88; transform: scale(1.08); }
+</style>
+
+<div id="preview-overlay" role="dialog" aria-modal="true" aria-labelledby="preview-title">
+  <div id="preview-modal">
+    <h2 id="preview-title">Thank you for taking the time to check out the website I made for your business!</h2>
+    <p>Here are a couple of things to keep in mind while viewing the site:</p>
+    <ul>
+      <li>All images are placeholders and will be changed at your request.</li>
+      <li>All reviews are also placeholders and will be replaced with your real business reviews.</li>
+      <li>Any text will be edited at your request.</li>
+      <li>Any custom build you require will be done at your request.</li>
+    </ul>
+    <button id="preview-close-btn" type="button">View my Site</button>
+    <p id="preview-hint">Press the <strong>?</strong> after viewing your site for more information.</p>
+  </div>
+</div>
+
+<button id="preview-help-btn" type="button" aria-label="View site preview information">?</button>
+
+<script>
+  /* Preview overlay — inline after elements so getElementById works immediately */
+  (function () {
+    var overlay = document.getElementById('preview-overlay');
+    var closeBtn = document.getElementById('preview-close-btn');
+    var helpBtn  = document.getElementById('preview-help-btn');
+    if (!overlay || !closeBtn || !helpBtn) return;
+    closeBtn.addEventListener('click', function () { overlay.style.display = 'none'; });
+    helpBtn.addEventListener('click',  function () { overlay.style.display = 'flex'; });
+  })();
+</script>
+<!-- END PREVIEW OVERLAY -->
+
+
+<header id="navbar">
+  <div class="nav-inner container">
+    <a href="#hero" class="nav-logo">
+      <img src="assets/logo.jpg" alt="Turf Plus logo" style="max-height:50px;width:auto">
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="tel:8013732065" class="nav-cta btn btn-primary">Call (801) 373-2065</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:8013732065" class="btn btn-primary btn-full">Call (801) 373-2065</a>
+  </div>
+</header>
+
+<section id="hero">
+  <div class="hero-bg">
+    <img src="assets/hero.jpg" alt="Lush green lawn maintained by Turf Plus in Provo, Utah">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content container">
+    <span class="hero-badge">Because the Best Things in Life Happen in Your Own Backyard</span>
+    <h1>Provo's Go-To Team for a <span>Healthier, Greener Lawn</span></h1>
+    <p class="hero-sub">Contact Turf Plus today to sign up for one of our recommended programs and make your lawn look great all season long!</p>
+    <div class="hero-actions">
+      <a href="tel:8013732065" class="btn btn-primary">Call (801) 373-2065</a>
+      <a href="#contact" class="btn btn-outline-white">Get a Free Estimate</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-value"><span class="count" data-target="4">4</span></span>
+        <span class="hero-stat-caption">Core Service Promises</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-value"><span class="count" data-target="4.9">4.9</span></span>
+        <span class="hero-stat-caption">Average Google Rating</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-value"><span class="count" data-target="100">100</span><span class="unit">%</span></span>
+        <span class="hero-stat-caption">Free Estimates</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="badge">Why Provo Trusts Turf Plus</span>
+      <h2>Lawn Care, Made Simple</h2>
+      <p>We built our business around four simple promises — and we keep them, every single visit.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <h3>No Hassle</h3>
+        <p>We believe in a hassle-free lawn. Our goal is to completely remove the stress of a green, healthy lawn! A great lawn is just a phone call away!</p>
+      </div>
+      <div class="service-card reveal delay-1">
+        <h3>Great Price</h3>
+        <p>We work, day in and day out, to give you the best possible price on your lawn care. For over 40 years, our motto has been, "green lawn, great price."</p>
+      </div>
+      <div class="service-card reveal delay-2">
+        <h3>Smart Staff</h3>
+        <p>We pride ourselves in our knowledgeable staff to give you a friendly, helpful experience any time you need us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-img-wrap reveal">
+      <img src="assets/about.jpg" alt="Turf Plus lawn care technician caring for a Provo lawn">
+    </div>
+    <div class="about-content reveal delay-1">
+      <span class="badge">Locally Owned &amp; Operated</span>
+      <h2>A Local Company With Local Values</h2>
+      <p>We're a local company with local values. With over 40 years experience, we've helped a lot of your friends, family and neighbors maintain great lawns. Let us help you!</p>
+      <p>Since we live in a desert, our lawns need watering to look great. August requires watering 2-3 times per week. Lingering footprints or a grayish hue indicate soil is dry — our team knows exactly what your lawn needs, when it needs it.</p>
+      <blockquote style="border-left:3px solid var(--brand-green);padding-left:16px;margin:24px 0;font-style:italic;color:var(--dark-card)">
+        "The way Turf Plus responded to our problems last year made us keep them this year. I was very impressed! They didn't run away. They made sure everything was great! Will recommend."
+        <footer style="font-style:normal;font-weight:600;margin-top:8px;font-size:0.9rem;">— Molly K., Salt Lake City, UT</footer>
+      </blockquote>
+      <a href="tel:8013732065" class="btn btn-primary">Speak With Our Team</a>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <div class="section-head light reveal">
+      <span class="badge">Our Work</span>
+      <h2>See Turf Plus in Action</h2>
+      <p>A look at the kind of care and craftsmanship that keeps Provo lawns looking their best.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal" data-idx="0">
+        <img src="assets/gallery-photos/gallery-00.jpg" alt="Professional lawn care crew at work" loading="lazy" />
+      </div>
+      <div class="gallery-item reveal delay-1" data-idx="1">
+        <img src="assets/gallery-photos/gallery-01.jpg" alt="Freshly mowed green lawn with crisp edging" loading="lazy" />
+      </div>
+      <div class="gallery-item reveal delay-2" data-idx="2">
+        <img src="assets/gallery-photos/gallery-02.jpg" alt="Lawn care technician applying fertilizer treatment" loading="lazy" />
+      </div>
+      <div class="gallery-item reveal" data-idx="3">
+        <img src="assets/gallery-photos/gallery-03.jpg" alt="Healthy green residential lawn in the sunshine" loading="lazy" />
+      </div>
+      <div class="gallery-item reveal delay-1" data-idx="4">
+        <img src="assets/gallery-photos/gallery-04.jpg" alt="Lawn sprinkler irrigation system in operation" loading="lazy" />
+      </div>
+      <div class="gallery-item reveal delay-2" data-idx="5">
+        <img src="assets/gallery-photos/gallery-05.jpg" alt="Landscaping crew trimming shrubs near a lawn" loading="lazy" />
+      </div>
+      <div class="gallery-item reveal" data-idx="6">
+        <img src="assets/gallery-photos/gallery-06.jpg" alt="Close-up of thick, healthy turf grass" loading="lazy" />
+      </div>
+      <div class="gallery-item reveal delay-1" data-idx="7">
+        <img src="assets/gallery-photos/gallery-07.jpg" alt="Lawn care equipment staged for a service visit" loading="lazy" />
+      </div>
+      <div class="gallery-item reveal delay-2" data-idx="8">
+        <img src="assets/gallery-photos/gallery-08.jpg" alt="Wide view of a manicured front yard lawn" loading="lazy" />
+      </div>
+    </div>
+    <div class="gallery-footer">
+      <button type="button" class="btn btn-outline-white" id="galleryViewMore">View More Photos</button>
+    </div>
+  </div>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image gallery">
+    <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+    <button class="lb-prev" id="lbPrev" aria-label="Previous">&#8249;</button>
+    <div class="lb-img-wrap"><img src="" alt="" id="lbImg" /></div>
+    <button class="lb-next" id="lbNext" aria-label="Next">&#8250;</button>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="badge">Google Reviews</span>
+      <h2>What Our Customers Say</h2>
+      <div class="overall-rating">
+        <div class="big-stars">★★★★★</div>
+        <div class="rating-info">
+          <span class="rating-num">4.9</span>
+          <span class="rating-label">Average Google Rating</span>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-top">
+          <div class="reviewer-avatar" style="--av-color:#048d46">DM</div>
+          <div class="reviewer-meta">
+            <strong>David Mecham</strong>
+            <span>Local Guide · 22 reviews</span>
+          </div>
+          <svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-body">
+          <p class="review-text">We switched to Turf Plus after another company let our backyard get full of weeds. Within a month our lawn on the west side of Provo looked completely different — thick, green, no more dandelions. Their tech always calls ahead too, which we appreciate.</p>
+          <button class="review-toggle" type="button" hidden>See more</button>
+        </div>
+        <time>2 weeks ago</time>
+      </div>
+      <div class="review-card reveal delay-1">
+        <div class="review-top">
+          <div class="reviewer-avatar" style="--av-color:#1870ab">SR</div>
+          <div class="reviewer-meta">
+            <strong>Sarah Robbins</strong>
+            <span>9 reviews · 3 photos</span>
+          </div>
+          <svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-body">
+          <p class="review-text">Called for a free estimate on a Tuesday and had someone out to our home near Sundance the following week. Fair pricing, no upselling, and the crew was polite and quick. Our lawn hasn't looked this good since we bought the house.</p>
+          <button class="review-toggle" type="button" hidden>See more</button>
+        </div>
+        <time>4 months ago</time>
+      </div>
+      <div class="review-card reveal delay-2">
+        <div class="review-top">
+          <div class="reviewer-avatar" style="--av-color:#8b5a2b">TN</div>
+          <div class="reviewer-meta">
+            <strong>Tyler Nash</strong>
+            <span>Local Guide · 41 reviews</span>
+          </div>
+          <svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-body">
+          <p class="review-text">Your service is awesome! We never get weeds! We've used Turf Plus for our aeration and weed control program for a couple seasons now in Orem and the results speak for themselves. Highly recommend to anyone in Utah County.</p>
+          <button class="review-toggle" type="button" hidden>See more</button>
+        </div>
+        <time>a year ago</time>
+      </div>
+    </div>
+    <div class="reviews-footer">
+      <a href="https://www.google.com/maps/search/Turf+Plus+Provo+UT" target="_blank" rel="noopener" class="btn btn-google">
+        <svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Leave Us a Review
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="badge">Get In Touch</span>
+      <h2>Ready for a Better Lawn?</h2>
+      <p>Reach out today for your free, no-obligation estimate — a great lawn is just a phone call away.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="contact-item">
+          <span class="ci-icon">📍</span>
+          <div>
+            <strong>Address</strong>
+            <p>1901 W 820 N, Provo, UT 84601</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="ci-icon">📞</span>
+          <div>
+            <strong>Phone</strong>
+            <p><a href="tel:8013732065">(801) 373-2065</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="ci-icon">🕒</span>
+          <div>
+            <strong>Hours</strong>
+            <p>Mon–Fri: 8am–6pm<br>Sat: 9am–4pm<br>Sun: Closed</p>
+          </div>
+        </div>
+        <div class="map-wrap">
+          <iframe src="https://maps.google.com/maps?q=Provo+UT&t=&z=11&ie=UTF8&iwloc=&output=embed" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy" title="Turf Plus location map"></iframe>
+        </div>
+      </div>
+      <form class="contact-form reveal delay-1" action="#" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(801) 555-1234" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address">Property Address</label>
+          <input type="text" id="address" name="address" placeholder="Street address in Provo or nearby">
+        </div>
+        <div class="form-group">
+          <label for="message">How Can We Help?</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell us about your lawn — mowing, weed control, fertilization, etc." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Request My Free Estimate</button>
+        <p class="form-success" hidden>Thanks! We'll be in touch shortly to schedule your free estimate.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo.jpg" alt="Turf Plus logo" style="max-height:60px;width:auto;margin-bottom:8px">
+        <p>Locally owned and operated, Turf Plus is a trusted name in Provo lawn care — hassle-free service, honest pricing, and a friendly, knowledgeable staff.</p>
+      </div>
+      <nav class="footer-nav">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-hours">
+        <h4>Business Hours</h4>
+        <table>
+          <tr><td>Mon – Fri</td><td>8:00am – 6:00pm</td></tr>
+          <tr><td>Saturday</td><td>9:00am – 4:00pm</td></tr>
+          <tr><td>Sunday</td><td>Closed</td></tr>
+        </table>
+      </div>
+      <div class="footer-cta-box">
+        <h4>Ready to get started?</h4>
+        <p>Call us today for your free, no-obligation estimate.</p>
+        <a href="tel:8013732065" class="btn btn-primary">Call (801) 373-2065</a>
+        <a href="#contact" class="btn btn-outline-white">Get a Quote</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Turf Plus — All rights reserved.</p>
+      <p>Serving Provo &amp; surrounding areas</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
